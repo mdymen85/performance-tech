@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  db:
+    image: 'mysql'
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=performance
+    deploy:
+      replicas: 1
+    ports:
+      - "3306:3306"
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8888:8080"    
