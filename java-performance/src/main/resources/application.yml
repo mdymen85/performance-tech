@@ -1,0 +1,13 @@
+#my-secret-pw
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_ORIGIN:localhost}:${MYSQL_POST_ORIGIN:3306}/${MYSQL_DB_ORIGIN:performance}?allowPublicKeyRetrieval=true&autoReconnect=true
+    username: ${MYSQL_USERNAME_ORIGIN:root}
+    password: ${MYSQL_PASSWORD_ORIGIN:my-secret-pw}
+  jpa:
+    show-sql: true
+    maxResults: 1000
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect

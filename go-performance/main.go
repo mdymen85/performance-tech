@@ -18,7 +18,7 @@ func main() {
 
 	cfg := mysql.Config{
 		User:   "root",
-		Passwd: "test",
+		Passwd: "my-secret-pw",
 		//User:                 os.Getenv("root"),
 		//Passwd:               os.Getenv("test"),
 		Net:                  "tcp",
@@ -43,14 +43,18 @@ func main() {
 	router.HandleFunc("/api/v1/account", PostAccount).Methods("POST")
 	router.HandleFunc("/api/v1/transaction", PostTransaction).Methods("POST")
 
-	log.Fatal(http.ListenAndServe(":8082", router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 
 }
 
 func PostTransaction(w http.ResponseWriter, r *http.Request) {
+
+	//time.Sleep(8 * time.Second)
+
 	var transaction Transaction
 	json.NewDecoder(r.Body).Decode(&transaction)
 	db.Exec("INSERT INTO transactions(account, tvalue, type, created_at) VALUES(?, ?, ?, CURRENT_TIMESTAMP())", transaction.Account, transaction.Tvalue, transaction.Ttype)
+	db.Exec("UPDATE accounts SET balance = balance + ? WHERE account = ?", transaction.Tvalue, transaction.Account)
 }
 
 func PostAccount(w http.ResponseWriter, r *http.Request) {
