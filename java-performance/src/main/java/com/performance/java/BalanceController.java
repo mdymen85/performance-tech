@@ -26,4 +26,16 @@ public class BalanceController {
         balanceService.createTransaction(request);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/v2/account", method = RequestMethod.POST)
+    public ResponseEntity<Void> createAccountJdbc(@RequestBody AccountRequest request) {
+        balanceService.createAccount(request);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/v2/transaction", method = RequestMethod.POST)
+    public ResponseEntity<Void> createTransactionJdbc(@RequestBody TransactionRequest request) {
+        balanceService.createTransactionJdbc(request);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }
