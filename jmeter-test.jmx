@@ -33,19 +33,20 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;account&quot;:1235,&#xd;
-    &quot;ttype&quot;:&quot;D&quot;,&#xd;
-    &quot;tvalue&quot;:1&#xd;
+    &quot;account&quot;: 1,&#xd;
+    &quot;tvalue&quot;: 1,&#xd;
+    &quot;created_at&quot;: &quot;2023-05-01&quot;,&#xd;
+    &quot;type&quot;:&quot;C&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.port">3000</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/v1/transaction</stringProp>
+          <stringProp name="HTTPSampler.path">transaction</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
